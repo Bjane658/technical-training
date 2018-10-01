@@ -4,6 +4,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
+
 class Courses(models.Model):
     _name = 'openacademy.course'
 
@@ -24,3 +25,4 @@ class Sessions(models.Model):
     def _checkAttendeeCount(self):
         if len(self.attendee_ids) > self.seats:
             raise ValidationError("There are too manny Attendees")
+            
