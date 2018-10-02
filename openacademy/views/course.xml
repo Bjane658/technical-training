@@ -10,12 +10,41 @@
             </tree>
         </field>
     </record>
-
+    <record model="ir.ui.view" id="session_view_tree">
+        <field name="name">Session View Tree</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="start_date" />
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="session_view_form">
+        <field name="name">Session View Form</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                <field name="name" />
+                <field name="description" />
+                <field name="responsible_id" />
+                <field name="attendee_ids"/>
+                </group>
+            </form>
+        </field>
+    </record>
     
     <!-- Actions -->
     <record model="ir.actions.act_window" id="action_course">
       <field name="name">Course Action</field>
       <field name="res_model">openacademy.course</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_session">
+      <field name="name">Session Action</field>
+      <field name="res_model">openacademy.session</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -25,7 +54,7 @@
     <menuitem name="OpenA" id="menu_root"/>
     <!-- Top menu item -->
     <menuitem name="Course" id="menu_course_top" parent="menu_root" sequence="1" />
-    <!-- actions -->
-    <menuitem name="TEST" id="menu_course" parent="menu_course_top"
-              action="action_course"/>
+    <!-- sessions -->
+    <menuitem name="Sessions" id="menu_course" parent="menu_root"
+              action="action_session"/>
 </odoo>
