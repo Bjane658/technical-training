@@ -1,0 +1,31 @@
+<odoo>
+    <record model="ir.ui.view" id="session_view_tree">
+        <field name="name">Session List</field>
+        <field name="model">openacademy.course.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+                
+            </tree>
+        </field>
+    </record>
+
+    
+    <!-- Actions -->
+    <record model="ir.actions.act_window" id="action_sessiion">
+      <field name="name">Session Action</field>
+      <field name="res_model">openacademy.course.session</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    
+    
+     <!-- Top menu item -->
+    <menuitem name="OpenA" id="menu_root"/>
+    <!-- Top menu item -->
+    <menuitem name="Session" id="menu_session_top" parent="menu_root" sequence="2" />
+    <!-- actions -->
+    <menuitem name="Sessions" id="menu_course" parent="menu_course_top"
+              action="action_course"/>
+</odoo>
