@@ -2,11 +2,14 @@
     <record id="teacher_ludo" model="res.partner">
         <field name="name">Ludovic Pintadaux</field>
         <field name="email">ludo@openacademy.org</field>
+        <field name="is_instructor">1</field>
+
     </record>
 
     <record id="teacher_francis" model="res.partner">
         <field name="name">Francis Francois</field>
         <field name="email">francis@openacademy.org</field>
+        <field name="is_instructor">1</field>
     </record>
 
     <record id="course_technical" model="openacademy.course">

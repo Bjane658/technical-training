@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, exceptions, _
 
+class Contact(models.Model):
+    _inherit = "res.partner"
+    
+    is_instructor = fields.Boolean()
+    session_ids = fields.One2many('openacademy.session', 'attendee_ids', string="Sessions", domain=[('attendee_ids.name', 'ilike', 'self.name')])
+
 class Course(models.Model):
     _name = 'openacademy.course'
 
@@ -26,12 +32,13 @@ class Session(models.Model):
     active = fields.Boolean(default=True)
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
-    instructor_id = fields.Many2one('res.partner', string="Instructor")
+    instructor_id = fields.Many2one('res.partner', string="Instructor", domain=[('is_instructor', '=', True)])
     course_id = fields.Many2one('openacademy.course', ondelete='cascade', string="Course", required=True)
     attendee_ids = fields.Many2many('res.partner', string="Attendees", domain=[('is_company', '=', False)])
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
     level = fields.Selection(related='course_id.level', readonly=True)
     responsible_id = fields.Many2one(related='course_id.responsible_id', readonly=True, store=True)
+    
 
     attendees_count = fields.Integer(string="Attendees count", compute='_get_attendees_count', store=True)
 
