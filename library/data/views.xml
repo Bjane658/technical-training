@@ -16,8 +16,14 @@
     </record>
 
     <record id="library_rental_action" model="ir.actions.act_window">
-        <field name="name">Rentals</field>
+        <field name="name">Book_rentals</field>
         <field name="res_model">library.rental</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record id="library_book_copy_action" model="ir.actions.act_window">
+        <field name="name">Book_Copies</field>
+        <field name="res_model">library.book_copy</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -52,12 +58,12 @@
         action="library_partner_action"
         name="Partners" />
 
-    <!-- Library/Library/Rentals -->
+    <!-- Library/Library/Book_Copies -->
     <menuitem
-        id="library_rental_menu"
+        id="library_book_copy_menu"
         parent="library_menu"
-        action="library_rental_action"
-        name="Rentals" />
+        action="library_book_copy_action"
+        name="Book_Copies" />
 
     <!-- Library/Settings -->
     <menuitem

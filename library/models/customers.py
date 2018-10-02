@@ -8,4 +8,4 @@ class Partner(models.Model):
     email = fields.Char(string='Email')
     address = fields.Text(string='Address')
     partner_type = fields.Selection([('customer', 'Customer'), ('author', 'Author')], default="customer")
-    rental_ids = fields.One2many('library.rental', 'customer_id', string='Rentals')
+    book_copy_ids = fields.One2many('library.book_copy', 'customer_id', string='Book_Copies')
