@@ -1,14 +1,14 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="view_partner_form">
+   <!--   
+    <record model="ir.ui.view" id="view_partner_form_color">
       <field name="name">res.partner.form.inherit</field>
-      <field name="model">sipgate.callsip</field>
+      <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
       <field name="arch" type="xml">
         
-        <form>
+        <form position="after">
             <group>
           <field name="favColor"/>
             </group>
@@ -16,7 +16,21 @@
 
       </field>
     </record>
-    -->
+    -->  
+      <record model="ir.ui.view" id="contact_form_view">
+            <field name="name">partner.favColor.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <group name="container_row_2" position="after">
+                    <group string="Sipate" name="sipgate">
+                        <field name="favColor"/>
+                        <button string="Call" type="object" name="call_partner" />
+                    </group>
+                </group>
+            </field>
+        </record>
+    
 
     <!-- actions opening views on models -->
     <!--
