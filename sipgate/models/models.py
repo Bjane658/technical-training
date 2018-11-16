@@ -21,6 +21,11 @@ class sipCall(models.Model):
     
     favColor = fields.Char(string="FavColor")
     
+    
+    
     #Hier ist in der Authorization der Key rausgenommen, der muss wieder reingefuegt werden, bze aus den Stammdaten bezogen werden
     def call_partner(self):
-        os.system("curl -X POST 'https://api.sipgate.com/v2/sessions/calls' -H 'Authorization: Basic ##############################'-H 'accept: application/json' -H 'Content-Type: application/json' -d '{ \"deviceId\": \"e6\", \"caller\": \"+4921152800935\", \"callee\": \"+4921152800916\", \"callerId\": \"1234\"}'")
+        # self.env.user.phone funktioniert auch nicht, der button click geht ins leere
+        #currentUser = self.pool.get('res.users').browse(cr, uid, uid, context=context).phone
+        currentUser = "+4921152800935"
+        os.system("curl -X POST 'https://api.sipgate.com/v2/sessions/calls' -H 'Authorization: Basic ###########'-H 'accept: application/json' -H 'Content-Type: application/json' -d '{ \"deviceId\": \"e6\", \"caller\": \"" + currentUser + " \", \"callee\": \"" + self.phone + " \", \"callerId\": \"+4921152800935\"}'")
